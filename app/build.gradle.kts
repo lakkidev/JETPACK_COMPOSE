@@ -54,55 +54,45 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.coreKtx)
+    implementation(Dependencies.lifecycle)
+    implementation(Dependencies.activityCompose)
+    implementation(platform(Dependencies.composeBom))
+    implementation(Dependencies.composeUi)
+    implementation(Dependencies.composeUiGraphics)
+    implementation(Dependencies.composeUiToolingPreview)
+    implementation(Dependencies.composeMaterial3)
+    implementation(Dependencies.composeMaterial3Window)
+    implementation(Dependencies.navigationRuntimeKtx)
+    testImplementation(Dependencies.junit)
+    testImplementation(platform(Dependencies.composeBom))
+    androidTestImplementation(Dependencies.androidxJunit)
+    androidTestImplementation(Dependencies.espresso)
+    androidTestImplementation(platform(Dependencies.composeBom))
+    androidTestImplementation(Dependencies.testJunit4)
+    androidTestImplementation(platform(Dependencies.composeBom))
+    debugImplementation(Dependencies.tooling)
+    debugImplementation(Dependencies.testManifest)
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.7.2")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3:1.1.2")
-    implementation("androidx.compose.material3:material3-window-size-class:1.1.2")
-    implementation("androidx.navigation:navigation-runtime-ktx:2.7.3")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation(Dependencies.navigationCompose)
 
-    val nav_version = "2.6.0"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation(Dependencies.daggerHilt)
+    kapt(Dependencies.daggerHiltCompiler)
 
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation(Dependencies.constraintlayout)
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.retrofitGson)
 
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    //Retrofit https://square.github.io/retrofit/ - latest vesion https://github.com/square/retrofit.
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    //Gson -> json data to java or kotlin format
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    //coroutines -> https://github.com/Kotlin/kotlinx.coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
+    implementation(Dependencies.coroutinesCore)
+    implementation(Dependencies.coroutinesAndroid)
 
-    //Viewmodel and livedata -> https://developer.android.com/jetpack/androidx/releases/lifecycle
-    // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    // Annotation processor
-    kapt("androidx.lifecycle:lifecycle-compiler:2.6.1")
-    // login intercept
-    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    implementation(Dependencies.viewmodelKtx)
+    implementation(Dependencies.livedataKtx)
+    kapt(Dependencies.lifecycleCompiler)
+    implementation(Dependencies.loggingInterceptor)
 
 }
-
-// Allow references to generated code
-kapt {
+ kapt {
     correctErrorTypes = true
 }
