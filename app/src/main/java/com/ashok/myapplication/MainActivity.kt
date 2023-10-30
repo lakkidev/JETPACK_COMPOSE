@@ -1,6 +1,7 @@
 package com.ashok.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerState
@@ -16,23 +17,41 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.ashok.myapplication.api.ProductApi
 import com.ashok.myapplication.navigation.bottomNavigation
 import com.ashok.myapplication.navigation.dashboardNavGraph
 import com.ashok.myapplication.navigation.drawerContent
 import com.ashok.myapplication.navigation.topAppBar
 import com.ashok.myapplication.screen.Screens
 import com.ashok.myapplication.ui.theme.MyApplicationTheme
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : androidx.activity.ComponentActivity() {
+
+    @Inject
+    lateinit var productApi: ProductApi
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        GlobalScope.launch(Dispatchers.Main) {
+            val productApi = productApi.geApi()
+            Log.d("productApi", "productApi......."+productApi.body().toString())
+        }
+
         setContent {
             MyApplicationTheme {
                 val navController = rememberNavController()

@@ -1,6 +1,7 @@
 package com.ashok.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,7 +16,10 @@ import androidx.navigation.compose.rememberNavController
 import com.ashok.myapplication.navigation.authNavGraph
 import com.ashok.myapplication.screen.Screens
 import com.ashok.myapplication.ui.theme.MyApplicationTheme
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,8 @@ class LoginActivity : ComponentActivity() {
                 }
             }
         }
+        Log.i("`productApi`", "productApit.......")
+
     }
 }
 

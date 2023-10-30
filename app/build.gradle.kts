@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -30,12 +33,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_18
+        targetCompatibility = JavaVersion.VERSION_18
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "18"
     }
+
     buildFeatures {
         compose = true
     }
@@ -74,5 +78,31 @@ dependencies {
     val nav_version = "2.6.0"
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    //Retrofit https://square.github.io/retrofit/ - latest vesion https://github.com/square/retrofit.
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    //Gson -> json data to java or kotlin format
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    //coroutines -> https://github.com/Kotlin/kotlinx.coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
+
+    //Viewmodel and livedata -> https://developer.android.com/jetpack/androidx/releases/lifecycle
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    // Annotation processor
+    kapt("androidx.lifecycle:lifecycle-compiler:2.6.1")
+    // login intercept
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
