@@ -3,7 +3,10 @@ package com.ashok.myapplication.di
 import com.ashok.myapplication.data.api.ApiService
 import com.ashok.myapplication.data.datasource.ProductDataSource
 import com.ashok.myapplication.data.datasource.ProductDataSourceImpl
+import com.ashok.myapplication.data.datasource.UserDataSource
+import com.ashok.myapplication.data.datasource.UserDataSourceImpl
 import com.ashok.myapplication.ui.repository.ProductRepository
+import com.ashok.myapplication.ui.repository.UsersRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +27,7 @@ class AppModule {
     @Provides
     fun provideRetrofit(): Retrofit {
         val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC
+            level = HttpLoggingInterceptor.Level.BODY
         }
 
         val httpClient = OkHttpClient().newBuilder().apply {
@@ -47,6 +50,7 @@ class AppModule {
         return retrofit.create(ApiService::class.java)
     }
 
+
     @Singleton
     @Provides
     fun provideProductDataSource(apiService: ApiService): ProductDataSource{
@@ -59,5 +63,17 @@ class AppModule {
         return ProductRepository(productDataSource)
     }
 
+
+    @Singleton
+    @Provides
+    fun provideUserDataSource(apiService: ApiService): UserDataSource{
+        return UserDataSourceImpl(apiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserRepository(userDataSource: UserDataSource): UsersRepository{
+        return UsersRepository(userDataSource)
+    }
 
 }

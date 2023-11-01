@@ -15,53 +15,73 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.ashok.myapplication.data.api.ApiService
 import com.ashok.myapplication.ui.navigation.bottomNavigation
 import com.ashok.myapplication.ui.navigation.dashboardNavGraph
 import com.ashok.myapplication.ui.navigation.drawerContent
 import com.ashok.myapplication.ui.navigation.topAppBar
 import com.ashok.myapplication.ui.screens.Screens
 import com.ashok.myapplication.ui.theme.MyApplicationTheme
-import com.ashok.myapplication.ui.utilities.ResourceState
+import com.ashok.myapplication.ui.utilities.Result
 import com.ashok.myapplication.ui.viewmodel.ProductsViewModel
+import com.ashok.myapplication.ui.viewmodel.UsersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : androidx.activity.ComponentActivity() {
 
     private val viewModel: ProductsViewModel by viewModels()
+    private val usersViewModel: UsersViewModel by viewModels()
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getAllProducts()
+        usersViewModel.getUserList(1)
         lifecycleScope.launch {
             viewModel.products.collect { state ->
                 when (state) {
-                    is ResourceState.Loading -> {
+                    is Result.Loading -> {
                         Log.d("productApi", "Loading.......")
                     }
 
-                    is ResourceState.Success -> {
+                    is Result.Success -> {
                         Log.d("productApi", "productApi......." + state.data.toString())
                     }
 
-                    is ResourceState.Error -> {
-                        Log.d("productApi", "Loading.......")
+                    is Result.Error -> {
+                        Log.d("productApi", "error......."+state.error)
 
                     }
                 }
             }
         }
+
+        usersViewModel.userData.observe(this, Observer { state->
+            when(state){
+                is Result.Loading ->{
+                    Log.d("userApi", "Loading.......")
+
+                }
+
+                is Result.Success -> {
+                    Log.d("userApi", "success......." + state.data.toString())
+                }
+
+                is Result.Error -> {
+                    Log.d("userApi", "error......."+state.error)
+
+                }
+            }
+        })
 
         setContent {
             MyApplicationTheme {
