@@ -93,6 +93,7 @@ dependencies {
     implementation(Dependencies.livedataKtx)
     kapt(Dependencies.lifecycleCompiler)
     implementation(Dependencies.loggingInterceptor)
+    implementation(Dependencies.splashscreen)
 
 }
  kapt {

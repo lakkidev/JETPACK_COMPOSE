@@ -31,5 +31,6 @@ object Dependencies {
     val livedataKtx by lazy { "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleViewmodel}" }
     val lifecycleCompiler by lazy { "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycleViewmodel}" }
     val loggingInterceptor by lazy { "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}" }
+    val splashscreen by lazy { "androidx.core:core-splashscreen:${Versions.splashscreen}" }
 
 }

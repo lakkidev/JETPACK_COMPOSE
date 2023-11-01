@@ -16,4 +16,5 @@ object Versions {
     const val coroutinesCore = "1.7.2"
     const val lifecycleViewmodel = "2.6.1"
     const val loggingInterceptor = "4.11.0"
+    const val splashscreen = "1.0.0"
 }
