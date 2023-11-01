@@ -1,14 +1,14 @@
-package com.ashok.myapplication.navigation
+package com.ashok.myapplication.ui.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.ashok.myapplication.screen.Screens
-import com.ashok.myapplication.screen.FavScreen
-import com.ashok.myapplication.screen.HomeScreen
-import com.ashok.myapplication.screen.LyricScreen
-import com.ashok.myapplication.screen.ProfileScreen
+import com.ashok.myapplication.ui.screens.Screens
+import com.ashok.myapplication.ui.screens.FavScreen
+import com.ashok.myapplication.ui.screens.HomeScreen
+import com.ashok.myapplication.ui.screens.LyricScreen
+import com.ashok.myapplication.ui.screens.ProfileScreen
 
 fun NavGraphBuilder.dashboardNavGraph(navController: NavController) {
     navigation(

@@ -1,4 +1,4 @@
-package com.ashok.myapplication.screen
+package com.ashok.myapplication.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,22 +20,17 @@ import androidx.navigation.compose.rememberNavController
 import com.ashok.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
-fun ForgotPassword(navController: NavController, modifier: Modifier = Modifier) {
+fun RegistrationScreen(navController: NavController, modifier: Modifier = Modifier) {
     MyApplicationTheme {
         Surface(
-            modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
+            modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(text = "Forgot Password Page", fontSize = 30.sp)
-                Spacer(modifier.height(10.dp))
-                Button(onClick = {
-                    navController.navigate(Screens.Registration.router)
-                }) {
-                    Text(text = "Registration")
-                }
+                Text(text = "Registration Page", fontSize = 30.sp)
                 Spacer(modifier.height(10.dp))
                 Button(onClick = {
                     navController.navigate(Screens.Login.router){
@@ -46,6 +41,12 @@ fun ForgotPassword(navController: NavController, modifier: Modifier = Modifier) 
                 }) {
                     Text(text = "Login")
                 }
+                Spacer(modifier.height(10.dp))
+                Button(onClick = {
+                    navController.navigate(Screens.ForgotPassword.router)
+                }) {
+                    Text(text = "Forgot password")
+                }
             }
         }
     }
@@ -53,6 +54,7 @@ fun ForgotPassword(navController: NavController, modifier: Modifier = Modifier) 
 
 @Preview
 @Composable
-fun ForgotPasswordView() {
-    ForgotPassword(navController = rememberNavController())
+fun RegistrationScreenView(){
+    RegistrationScreen(rememberNavController())
 }
+

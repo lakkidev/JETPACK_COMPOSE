@@ -1,4 +1,4 @@
-package com.ashok.myapplication.screen
+package com.ashok.myapplication.ui.screens
 
 import android.app.Activity
 import android.content.Intent

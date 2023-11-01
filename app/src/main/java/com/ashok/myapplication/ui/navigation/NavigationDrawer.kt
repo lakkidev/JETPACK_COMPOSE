@@ -1,4 +1,4 @@
-package com.ashok.myapplication.navigation
+package com.ashok.myapplication.ui.navigation
 
 import android.health.connect.datatypes.ExerciseRoute
 import androidx.compose.material3.DrawerValue

@@ -13,10 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.ashok.myapplication.navigation.authNavGraph
-import com.ashok.myapplication.screen.Screens
+import com.ashok.myapplication.ui.navigation.authNavGraph
+import com.ashok.myapplication.ui.screens.Screens
 import com.ashok.myapplication.ui.theme.MyApplicationTheme
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,8 +39,6 @@ class LoginActivity : ComponentActivity() {
                 }
             }
         }
-        Log.i("`productApi`", "productApit.......")
-
     }
 }
 

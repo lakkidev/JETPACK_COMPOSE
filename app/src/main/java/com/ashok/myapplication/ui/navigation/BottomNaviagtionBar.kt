@@ -1,4 +1,4 @@
-package com.ashok.myapplication.navigation
+package com.ashok.myapplication.ui.navigation
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -16,7 +16,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.ashok.myapplication.screen.Screens
+import com.ashok.myapplication.ui.screens.Screens
 
 @Composable
 fun bottomNavigation(navController: NavHostController) {

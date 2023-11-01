@@ -1,4 +1,4 @@
-package com.ashok.myapplication.models
+package com.ashok.myapplication.data.entity
 
 data class Products(
     val data:List<Data>

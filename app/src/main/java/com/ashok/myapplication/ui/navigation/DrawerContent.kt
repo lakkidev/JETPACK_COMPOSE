@@ -1,4 +1,4 @@
-package com.ashok.myapplication.navigation
+package com.ashok.myapplication.ui.navigation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Spacer
@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
@@ -18,11 +17,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import com.ashok.myapplication.R
-import com.ashok.myapplication.screen.Screens
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
+import com.ashok.myapplication.ui.screens.Screens
 
 @Composable
 fun drawerContent(

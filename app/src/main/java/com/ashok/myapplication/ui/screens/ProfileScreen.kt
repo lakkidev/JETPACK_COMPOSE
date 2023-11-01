@@ -1,4 +1,4 @@
-package com.ashok.myapplication.screen
+package com.ashok.myapplication.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -11,13 +11,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.ashok.myapplication.R
 import com.ashok.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
-fun FavScreen(navController: NavController) {
+fun ProfileScreen(navController: NavController) {
     MyApplicationTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -44,11 +46,17 @@ fun FavScreen(navController: NavController) {
                     )
                 }
                 Text(
-                    "Fav Screen",
+                    "Profile Screen",
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(vertical = 20.dp)
                 )
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun profileView(){
+    ProfileScreen(rememberNavController())
 }

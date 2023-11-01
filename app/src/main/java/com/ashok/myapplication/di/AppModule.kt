@@ -1,12 +1,18 @@
 package com.ashok.myapplication.di
 
-import com.ashok.myapplication.api.ProductApi
+import com.ashok.myapplication.data.api.ApiService
+import com.ashok.myapplication.data.datasource.ProductDataSource
+import com.ashok.myapplication.data.datasource.ProductDataSourceImpl
+import com.ashok.myapplication.ui.repository.ProductRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 
@@ -17,15 +23,41 @@ class AppModule {
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
+        val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BASIC
+        }
+
+        val httpClient = OkHttpClient().newBuilder().apply {
+            addInterceptor(httpLoggingInterceptor)
+        }
+        httpClient.apply {
+            readTimeout(60, TimeUnit.SECONDS)
+        }
+
+
         return Retrofit.Builder().baseUrl("https://reqres.in/api/")
+            .client(httpClient.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
     @Singleton
     @Provides
-    fun provideProductsApi(retrofit: Retrofit): ProductApi {
-        return retrofit.create(ProductApi::class.java)
+    fun provideProductsApi(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideProductDataSource(apiService: ApiService): ProductDataSource{
+        return ProductDataSourceImpl(apiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideProductRepository(productDataSource: ProductDataSource): ProductRepository{
+        return ProductRepository(productDataSource)
+    }
+
 
 }

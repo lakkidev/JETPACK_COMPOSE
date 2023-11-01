@@ -1,4 +1,4 @@
-package com.ashok.myapplication.navigation
+package com.ashok.myapplication.ui.navigation
 
 import android.graphics.fonts.FontStyle
 import androidx.compose.foundation.layout.Arrangement
