@@ -18,6 +18,10 @@ object Dependencies {
     val navigationCompose by lazy { "androidx.navigation:navigation-compose:${Versions.navigationCompose}" }
     val daggerHilt by lazy { "com.google.dagger:hilt-android:${Versions.dagger}" }
     val daggerHiltCompiler by lazy { "com.google.dagger:hilt-android-compiler:${Versions.dagger}" }
+//    val hiltViewModel by lazy { "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltViewModel}" }
+//    val hiltCompiler by lazy { "androidx.hilt:hilt-compiler:${Versions.hiltViewModel}" }
+
+    val hiltNavigationCompose by lazy { "androidx.hilt:hilt-navigation-compose:${Versions.hiltViewModel}" }
     val constraintlayout by lazy { "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}" }
     val retrofit by lazy { "com.squareup.retrofit2:retrofit:${Versions.retrofit}" }
     val retrofitGson by lazy { "com.squareup.retrofit2:converter-gson:${Versions.retrofit}" }

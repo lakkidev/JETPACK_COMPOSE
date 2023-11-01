@@ -79,6 +79,8 @@ dependencies {
     implementation(Dependencies.daggerHilt)
     kapt(Dependencies.daggerHiltCompiler)
 
+    implementation(Dependencies.hiltNavigationCompose)
+
     implementation(Dependencies.constraintlayout)
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitGson)

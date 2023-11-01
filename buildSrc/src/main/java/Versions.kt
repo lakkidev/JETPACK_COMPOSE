@@ -10,6 +10,7 @@ object Versions {
     const val espresso = "3.5.1"
     const val navigationCompose = "2.6.0"
     const val dagger = "2.44"
+    const val hiltViewModel = "1.0.0-alpha02"
     const val constraintlayout = "2.1.4"
     const val retrofit = "2.9.0"
     const val coroutinesCore = "1.7.2"

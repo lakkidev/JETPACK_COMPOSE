@@ -1,7 +1,7 @@
 package com.ashok.myapplication.data.entity
 
 data class Products(
-    val data:List<Data>
+    val data:List<Data> = emptyList()
 ){
     data class Data(
         val id:Int,

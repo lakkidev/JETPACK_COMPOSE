@@ -16,7 +16,7 @@ fun NavGraphBuilder.dashboardNavGraph(navController: NavController) {
         route = Screens.DashboardRoute.router
     ) {
         composable(Screens.Home.router) {
-            HomeScreen(navController)
+            HomeScreen(navController = navController)
         }
         composable(Screens.Lyric.router) {
             LyricScreen(navController)
